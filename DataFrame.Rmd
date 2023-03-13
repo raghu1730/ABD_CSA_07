@@ -1,0 +1,131 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+```{r}
+friend.data<-data.frame(friend_id=c(1:5), friend_name = c("David", "John", "Dhoni", "sehwag", "Sourav"), stringsAsFactors = FALSE)
+print(friend.data)
+```
+
+```{r}
+
+```
+
+```{r}
+print(str(friend.data))
+
+```
+
+```{r}
+print(summary(friend.data))
+```
+
+```{r}
+result<-data.frame(friend.data$friend_name)
+print(result)
+```
+
+```{r}
+friend.data$address<-c("Montreal","Toronto", "Vancover","Montral","Toronto")
+New_Friend.data<-friend.data
+print(New_Friend.data)
+```
+
+```{r}
+class(New_Friend.data)
+```
+
+```{r}
+#accessing 1st, 2nd n 3rd row in dataframe
+print(New_Friend.data[1:3,])
+```
+
+```{r}
+print(New_Friend.data[1:4,"address"])
+```
+
+```{r}
+print(New_Friend.data[1:4, 2:3])
+```
+
+```{r}
+# Applying filter on dataframe
+filter1 = subset(New_Friend.data, friend_name=="David")
+print(filter1)
+```
+
+```{r}
+New_Friend_df.data=rbind(New_Friend.data, data.frame(friend_id=6, friend_name="raghu", address="Montreal"))
+print(New_Friend_df.data)
+```
+
+```{r}
+New_df = cbind(New_Friend_df.data, ph_no=c(51466455,41565546,51364578,45421659,52456215,61456255), Age=c(25,27,26,24,26,28))
+print(New_df)
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+New_df%>%filter(address=="Montreal" & Age>=25)
+```
+
+```{r}
+print(New_df)
+```
+
+```{r}
+New_df=New_df[,-5]
+```
+
+```{r}
+print(New_df)
+```
+
+```{r}
+New_df=New_df[-6,]
+print(New_df)
+```
+
+```{r}
+mutual_friend=data.frame(Name=c("Rachel", "Ross","shivya", "Ben", "John"), median=c("facebook", "instagram", "wechat","whatssup", "youtube"))
+print(mutual_friend)
+```
+
+```{r}
+New_mutual<-cbind(New_df, mutual_friend)
+```
+
+```{r}
+print(New_mutual)
+```
+
+```{r}
+
+   
+```
+
+if(New_mutual.Name=="Rachel")
+
+{
+
+print("He is presen")
+
+}

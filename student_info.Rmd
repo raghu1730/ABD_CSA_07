@@ -1,0 +1,125 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+```{r}
+studentdf<-data.frame(student_id=c(521466, 541254, 541254, 547874, 562154),
+                      course_id=c("GZ125", "JA652", "OS564", "RE565", "GZ126"),
+                      subject=c("Java","Testing", "Database","Bigdata", "Cprogramming"),
+                      Total_Hr=c(60, 60, 60, 40, 55))
+print(studentdf)
+```
+
+```{r}
+studentdf1=cbind(studentdf, Missing_Hr=c(10, 12, 5, 8, 6.5))
+print(studentdf1)
+```
+
+```{r}
+#Student Data Frame
+studentdf1$per_Miss_hr=(studentdf1$Missing_Hr/studentdf1$Total_Hr)*100
+print(studentdf1)
+```
+
+```{r}
+
+```
+
+```{r}
+student<-c("amal chamlee","Jay","Bertie leister","Dagny olson", "Shivya")
+print(student)
+
+```
+
+```{r}
+library("tibble")
+```
+
+```{r}
+#student Data Frame
+student_newdf<-add_column(studentdf1, student, .after=1)
+print(student_newdf)
+```
+
+```{r}
+# Course Data Frame
+course_df<-data.frame(course_no=c("GZ125","JA652","OS564","RE565","GZ126"),
+                      subject_name=c("Java","Testing","Database","Bigdata","Cprogramming"), total_marks=c(70, 100, 65, 75, 80), marks_secure=c(58.5, 75, 58,72, 75))
+print(course_df)
+```
+
+```{r}
+course_df$percentage=(course_df$marks_secure/course_df$total_marks)*100
+print(course_df)
+```
+
+```{r}
+#renaming column name
+names(course_df)[1]<-"course_id"
+print(course_df)
+```
+
+```{r}
+# Merging dataframe using couser id
+student_info<-merge(student_newdf, course_df, by=c("course_id"))
+print(student_info)
+```
+
+```{r}
+Join_date<-c("2019-05-12","2019-06-15","2020-07-04","2021-04-15","2021-05-20")
+print(join_date)
+```
+
+```{r}
+student_info1=cbind(student_info, Join_date)
+print(student_info1)
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+student_info1%>%filter(student_id==521466)
+```
+
+```{r}
+str(student_info1)
+```
+
+```{r}
+summary(student_info1)
+```
+
+```{r}
+student_info1[,c(3,10)]
+```
+
+```{r}
+# funciton using pass by values 
+values<-function(num1, num2)
+{
+  num1<-readline(prompt = "Enter the value A:")
+  num2<-readline(prompt = "Enter the value B:")
+  num1<-as.integer(num1)
+  num2<-as.integer(num2)
+  sum = num1 + num2
+  return(sum)
+}
+values(num1, num2)
+```

@@ -1,0 +1,198 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+```{r}
+# Array creation 
+```
+
+```{r}
+var1<-c(1,2,3,4,5,6,7,8,9)
+print(var1)
+```
+
+```{r}
+cat("length of vector:", length(var1))
+```
+
+```{r}
+# Multi Dimensional Array
+```
+
+```{r}
+mul_array<- array(2:13, dim = c(2,3,2))
+print(mul_array)
+```
+
+```{r}
+var1<-c(1,2,3,4,5,6,7,8,9)
+var2<-c(10,11,12)
+mul_array1=array(c(var1, var2), dim=c(2,3,2))
+print(mul_array1)
+```
+
+```{r}
+# Naming the arrays
+```
+
+```{r}
+row_name<-c("row1","row2")
+col_name<-c("col1", "col1","col3")
+mat_name<-c("mat1", "mat2")
+```
+
+```{r}
+mul_array2=array(2:14, dim=c(2,3,2), dimname = list(row_name, col_name, mat_name))
+print(mul_array2)
+```
+
+```{r}
+var<-c(1:10)
+```
+
+```{r}
+cat("Vector is:", var)
+```
+
+`{cat("Vector is:", vec)}`
+
+    {r}
+
+```{r}
+cat("Accessing the 3rd element is:", var[3])
+```
+
+```{r}
+print(mul_array2)
+```
+
+```{r}
+print(mul_array2[,,"mat1"])
+```
+
+```{r}
+print(mul_array2[,,"mat2"])
+
+```
+
+```{r}
+z=(mul_array2[1,1,1])
+print(z)
+```
+
+```{r}
+print(mul_array2["row1","col1","mat1"])
+```
+
+```{r}
+print(mul_array2[, c(1,3),1])
+```
+
+```{r}
+# Adding Element in side the array
+```
+
+```{r}
+x<-c(1,2,3,4,5)
+print("adding using c() funciton")
+x<-c(x,6)
+print(x)
+print("Adding of element using append funciton")
+x<-append(x,7)
+print(x)
+print("Adding element after computing the lenght")
+len<-length(x)
+print(len)
+x[len+1]<-8
+print(x)
+print("Adding on length + 3 index")
+x[len + 3]<-9
+print(x)
+x<-append(x, c(10,11,12), after=length(x)+3)
+print(x)
+```
+
+```{r}
+# Remvoing elements from array
+m<-c(1,2,3,4,5,6,7,8,9)
+print(m)
+```
+
+```{r}
+print("removing a single value element:3 from array")
+m<-m[m!=3]
+print(m)
+```
+
+```{r}
+print("Removing the elements based on condition")
+m<-m[m>2 & m<=8]
+print(m)
+```
+
+```{r}
+print("remove sequence of elements using another array")
+remove<-c(4, 6, 8)
+print(m%in%remove)
+print(m[!m%in%remove])
+```
+
+```{r}
+# Updating existing elements of array
+```
+
+```{r}
+m<-c(1,2,3,4,5,6,7,8,9)
+print(m)
+print("replace 1 with 0")
+m[1]<-0
+print(m)
+print("Updating sequence of elements")
+m[7:9]<- -1
+print(m)
+print("Updating two indices with two different values")
+m[c(2,5)]<-c(-1,-2)
+print(m)
+print("add new element in array")
+m[10]<-10
+print(m)
+```
+
+```{r}
+# Arithmetic operaiton on arrays
+test_arr1 <- array(c(1:8),c(2,2,2))
+print(test_arr1)
+test_arr2 <- array(c(9:16),c(2,2,2))
+print(test_arr2)
+print("Adding new arrays")
+arr_add <- test_arr1+test_arr2
+arr_add
+```
+
+```{r}
+test_arr2 <- array(c(9:16),c(2,2,2))
+print(test_arr2^2)
+```
+
+```{r}
+#Creating matrix with vector values 
+rowname=c("row1","row2","row3","row4")
+colname=c("col1","col2","col3","col4")
+m=matrix(c(1:16), nrow=4, dimnames = list(rowname, colname))
+print(m)
+```
