@@ -1,0 +1,101 @@
+---
+title: "R Notebook"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+Author: Raghu Bayya
+---
+
+## **Exercise with the data frame**
+
+Let say you have a Bike Store near St. Catherine
+
+Your store has 500 units of bikes with different size, color (green) and features.
+
+In promotion on green environment (for Eco-friendly) you spend \$1.500.
+
+The average price for single unit is \$650.99.
+
+If customer, make purchase of more than \$8.650 will get a discount of 25% and 1 year service free
+
+**ROI = ((Sales Growth-Marketing Cost) / Marketing Cost) \* 100%**
+
+**Sales Growth Rate = ((Current Period Sales - Prior Period Sales) / Prior Period Sales) \* 100%**
+
+```{r}
+bike_sales <- read.csv('bike_clean.csv', header=T, na.strings='')
+bike_sales
+```
+
+```{r}
+
+```
+
+```{r}
+str(bike_sales)
+```
+
+```{r}
+
+library(dplyr)
+#bike_sales%>%filter(bike_sales$Purchased.Bike=="Yes")
+New_bike<-bike_sales%>%mutate(Sales=bike_sales$Income*5/100)%>%filter(bike_sales$Purchased.Bike=="Yes")
+print(New_bike)
+```
+
+```{r}
+str(New_bike)
+```
+
+```{r}
+actual_unit_sold <- 497 # Units sold with the promotion
+Sales_price <- 650.99   # Price x single unit
+
+print(actual_unit_sold)
+print(Sales_price)
+```
+
+**Sales Revenue**
+
+```{r}
+Current_period_sales <- actual_unit_sold * Sales_price
+print(paste("The Sales Revenue = ", Current_period_sales))
+```
+
+```{r}
+#Previous_unit_sold <- sum(Sales$Purchased.Bike == "Yes")
+#print(paste("Previous unit sold = ",Previous_unit_sold))
+```
+
+```{r}
+Previous_Sales <- sum(New_bike$Sales)
+print(paste("The Previous Sales = ", Previous_Sales))
+```
+
+**Sales Growth Rate+**
+
+```{r}
+Sales_Growth_Rate <- round(((Current_period_sales - Previous_Sales) / Previous_Sales)*100,2)
+print(paste("Sales Growth Rate =", Sales_Growth_Rate,"%"))
+```
+
+**ROI**
+
+```{r}
+Marketing_Cost <- 1500
+ROI <- round(((Current_period_sales - Previous_Sales) - Marketing_Cost) / Marketing_Cost,2)
+print(paste("Previous Sales =", Previous_Sales))
+print(paste("Actual Sales =", Current_period_sales))
+print(paste("ROI =", ROI,"%"))
+```
+
+```{r}
+#Sales1 <- Sales %>% filter(Marital.Status=="Married")
+#Sales1
+```
+
+```{r}
+#Sales2 <- Sales %>% filter(Marital.Status=="Single")
+#Sales2
+```
