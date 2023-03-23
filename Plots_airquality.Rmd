@@ -1,0 +1,138 @@
+---
+title: "Plots"
+author: "Raghu"
+date: '2023-03-23'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+```{r}
+df_car<-data.frame(cars)
+print(df_car)
+```
+
+```{r}
+df_pf<-data.frame(pressure)
+print(df_pf)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(df_pf$temperature, df_pf$pressure)
+```
+
+```{r}
+df_aq<-data.frame(airquality)
+print(df_aq)
+```
+
+```{r}
+class(df_aq)
+```
+
+```{r}
+str(df_aq)
+```
+
+```{r}
+dim(df_aq)
+```
+
+```{r}
+summary(df_aq)
+```
+
+```{r}
+# Columns names
+names(df_aq)
+```
+
+```{r}
+df_aq$Temp
+```
+
+```{r}
+# mean of specific column
+mean(df_aq$Temp)
+```
+
+```{r}
+barplot(df_aq$Temp, main="Temp in the air", xlab="temp level", horiz=TRUE)
+```
+
+```{r}
+barplot(df_aq$Temp, main="Temp in the air", xlab="temp level", horiz=FALSE)
+```
+
+```{r}
+hist(df_aq$Temp, main="Maximum Temperatures", xlab ="Temp", xlim = c(50,110), col="yellow", freq = TRUE)
+```
+
+```{r}
+# Boxplot is used to mainly find the outliers in the data set. 
+boxplot(df_aq$Wind, main="Temp", xlab="Wind Speed", ylab="Wind", col = "yellow",
+        horizontal = TRUE)
+```
+
+```{r}
+summary(df_aq$Wind)
+```
+
+```{r}
+library("maps")
+library("purrr")
+```
+
+```{r}
+df_wl<-data.frame(world.cities)
+print(df_wl)
+```
+
+```{r}
+map(database = "world")
+points(x=df_wl$long[1:500], y=df_wl$lat[1:500], col="Red")
+```
+
+```{r}
+plot(df_aq$Ozone, df_aq$Month,
+     main="scatter plot with Ozone vs Month",
+     xlab = "ozone concentration",
+     ylab= "Monthly observations")
+```
+
+```{r}
+cars_info<-data.frame(mtcars)
+print(cars_info)
+```
+
+```{r}
+names(cars_info)
+```
+
+```{r}
+counts<-table(cars_info$mpg, cars_info$cyl)
+barplot(counts, main="MPG", xlab="Milage", col=c("darkblue", "red"), legend=rownames(counts), bside=TRUE)
+#print(counts)
+```
+
+```{r}
+data("co2")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
